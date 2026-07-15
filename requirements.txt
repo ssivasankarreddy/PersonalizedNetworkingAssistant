@@ -7,5 +7,4 @@ python-dotenv
 google-genai
 wikipedia-api
 pytest
-transformers
 torch
