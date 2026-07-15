@@ -22,7 +22,7 @@ st.set_page_config(
 
 load_css()
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "https://personalizednetworkingassistant-2.onrender.com/"
 
 # -----------------------------
 # Sidebar
