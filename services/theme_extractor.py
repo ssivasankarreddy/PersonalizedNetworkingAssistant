@@ -1,38 +1,58 @@
-from transformers import pipeline
+import re
 
-classifier = pipeline(
-    "zero-shot-classification",
-    model="facebook/bart-large-mnli"
-)
-
-CANDIDATE_LABELS = [
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Climate Change",
-    "Smart Cities",
-    "Blockchain",
-    "Cybersecurity",
-    "Cloud Computing",
-    "Healthcare",
-    "Finance",
-    "Education",
-    "Data Science",
-    "Urban Planning",
-    "Sustainability"
-]
+THEME_KEYWORDS = {
+    "Artificial Intelligence": [
+        "ai", "artificial intelligence", "machine learning",
+        "deep learning", "neural network", "llm"
+    ],
+    "Data Science": [
+        "data", "analytics", "statistics", "visualization"
+    ],
+    "Cybersecurity": [
+        "cyber", "security", "hacking", "malware", "encryption"
+    ],
+    "Cloud Computing": [
+        "cloud", "aws", "azure", "gcp", "docker", "kubernetes"
+    ],
+    "Web Development": [
+        "web", "frontend", "backend", "html",
+        "css", "javascript", "react", "node"
+    ],
+    "Software Engineering": [
+        "software", "developer", "programming",
+        "coding", "java", "python", "c++"
+    ],
+    "Networking": [
+        "network", "communication", "telecom"
+    ],
+    "IoT": [
+        "iot", "internet of things", "sensor", "arduino"
+    ],
+    "Blockchain": [
+        "blockchain", "crypto", "bitcoin", "ethereum"
+    ],
+    "Sustainability": [
+        "green", "climate", "sustainable",
+        "environment", "renewable"
+    ],
+}
 
 
 def extract_themes(text):
-    result = classifier(
-        text,
-        candidate_labels=CANDIDATE_LABELS,
-        multi_label=True
-    )
+
+    text = text.lower()
 
     themes = []
 
-    for label, score in zip(result["labels"], result["scores"]):
-        if score > 0.40:
-            themes.append(label)
+    for theme, keywords in THEME_KEYWORDS.items():
+
+        for keyword in keywords:
+
+            if re.search(r"\b" + re.escape(keyword) + r"\b", text):
+                themes.append(theme)
+                break
+
+    if not themes:
+        themes.append("General Technology")
 
     return themes
