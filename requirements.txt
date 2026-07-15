@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+sqlalchemy
+requests
+python-dotenv
+google-genai
+wikipedia-api
+pytest
+transformers
+torch
