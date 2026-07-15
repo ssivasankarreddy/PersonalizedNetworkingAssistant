@@ -280,11 +280,11 @@ An AI-powered web application that helps users generate professional networking 
 
 ### Developed By
 
-**Siva Sankar Reddy**
+**SIVA SANKAR REDDY**
 
-B.Tech (Computer Science)
+B.Tech (CSE(IoT and Automation)
 
-2026 Batch
+2027 Batch
 """)
 
 # =====================================================
