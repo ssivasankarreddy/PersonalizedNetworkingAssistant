@@ -22,7 +22,7 @@ st.set_page_config(
 
 load_css()
 
-BASE_URL = "https://personalizednetworkingassistant-2.onrender.com/"
+BASE_URL = "https://personalizednetworkingassistant-2.onrender.com"
 
 # -----------------------------
 # Sidebar
